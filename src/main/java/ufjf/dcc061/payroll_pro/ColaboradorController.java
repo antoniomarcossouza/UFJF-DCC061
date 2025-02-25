@@ -50,6 +50,7 @@ public class ColaboradorController {
             return "redirect:/colaboradores";
         }
         model.addAttribute("colaborador", colaborador);
+        model.addAttribute("cargos", CargoRepository.findAll());
         return "colaboradores/form";
     }
 
