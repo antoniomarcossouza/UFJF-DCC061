@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${dependente.id == null} ? 'Novo Dependente' : 'Editar Dependente'">Formulário Dependente</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 th:text="${dependente.id == null} ? 'Novo Dependente' : 'Editar Dependente'"></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+                <li><a th:href="@{/dependentes}">Dependentes</a></li>
+                <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+                <li><a th:href="@{/cargos}">Cargos</a></li>
+                <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <form th:action="@{${dependente.id == null} ? '/dependentes' : '/dependentes/editar/' + ${dependente.id}}" th:object="${dependente}" method="post">
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" th:field="*{nome}" required/>
+                </div>
+                <div>
+                    <label>Grau de Parentesco:</label>
+                    <input type="text" th:field="*{grauParentesco}" required/>
+                </div>
+                <div>
+                    <label>Colaborador:</label>
+                    <select th:field="*{colaborador}" required>
+                        <option th:each="colaborador : ${colaboradores}"
+                                th:value="${colaborador}"
+                                th:text="${colaborador.nome}"></option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </section>
+        <footer>
+            <a th:href="@{/dependentes}">Voltar</a>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

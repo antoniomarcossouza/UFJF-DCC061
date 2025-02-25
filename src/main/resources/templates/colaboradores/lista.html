@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Colaboradores</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Colaboradores</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+                <li><a th:href="@{/dependentes}">Dependentes</a></li>
+                <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+                <li><a th:href="@{/cargos}">Cargos</a></li>
+                <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <a th:href="@{/colaboradores/novo}" class="button">Novo Colaborador</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Salário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="colaborador : ${colaboradores}">
+                        <td th:text="${colaborador.id}"></td>
+                        <td th:text="${colaborador.nome}"></td>
+                        <td th:text="${colaborador.cargo}"></td>
+                        <td th:text="${colaborador.salario}"></td>
+                        <td>
+                            <a th:href="@{'/colaboradores/editar/' + ${colaborador.id}}">Editar</a>
+                            <a th:href="@{'/colaboradores/excluir/' + ${colaborador.id}}">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <footer>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

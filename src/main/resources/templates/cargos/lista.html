@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cargos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cargos</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+        <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+        <li><a th:href="@{/dependentes}">Dependentes</a></li>
+        <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+        <li><a th:href="@{/cargos}">Cargos</a></li>
+        <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <a th:href="@{/cargos/novo}" class="button">Novo Cargo</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cargo : ${cargos}">
+                        <td th:text="${cargo.id}"></td>
+                        <td th:text="${cargo.nome}"></td>
+                        <td th:text="${cargo.descricao}"></td>
+                        <td>
+                            <a th:href="@{'/cargos/editar/' + ${cargo.id}}">Editar</a>
+                            <a th:href="@{'/cargos/excluir/' + ${cargo.id}}">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <footer>
+            <a th:href="@{/}">Voltar</a>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

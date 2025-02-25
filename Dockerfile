@@ -1,8 +1,6 @@
-FROM amazoncorretto:17
-ARG JAR_FILE=target/*.jar
-
-COPY ${JAR_FILE} application.jar
-
-CMD apt-get update -y
-
-ENTRYPOINT ["java", "-Xmx2048M", "-jar", "/application.jar"]
+# Utiliza uma imagem base com OpenJDK 17
+FROM openjdk:17-jdk-alpine
+VOLUME /tmp
+# Copia o jar gerado para dentro do container
+COPY target/payroll_pro-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]

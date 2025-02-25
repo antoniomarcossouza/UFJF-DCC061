@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payroll PRO - Página Inicial</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bem-vindo ao Payroll PRO</h1>
+            <p>Sistema de Gestão de Folha de Pagamento</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+                <li><a th:href="@{/dependentes}">Dependentes</a></li>
+                <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+                <li><a th:href="@{/cargos}">Cargos</a></li>
+                <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h2>Página Inicial</h2>
+            <p>Utilize o menu acima para navegar pelas seções do sistema.</p>
+        </section>
+        <footer>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

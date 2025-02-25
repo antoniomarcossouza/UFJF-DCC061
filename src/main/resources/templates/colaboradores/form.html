@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${colaborador.id == null} ? 'Novo Colaborador' : 'Editar Colaborador'">Formulário de Colaborador</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 th:text="${colaborador.id == null} ? 'Novo Colaborador' : 'Editar Colaborador'"></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+                <li><a th:href="@{/dependentes}">Dependentes</a></li>
+                <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+                <li><a th:href="@{/cargos}">Cargos</a></li>
+                <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <form th:action="@{${colaborador.id == null} ? '/colaboradores' : '/colaboradores/editar/' + ${colaborador.id}}" th:object="${colaborador}" method="post">
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" th:field="*{nome}" required />
+                </div>
+                <div>
+                    <label>Cargo:</label>
+                    <input type="text" th:field="*{cargo}" required />
+                </div>
+                <div>
+                    <label>Salário:</label>
+                    <input type="number" step="0.01" th:field="*{salario}" required />
+                </div>
+                <div>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </section>
+        <footer>
+            <a th:href="@{/colaboradores}">Voltar</a>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

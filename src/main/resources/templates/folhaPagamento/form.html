@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${folha.id == null} ? 'Nova Folha de Pagamento' : 'Editar Folha de Pagamento'">Formulário de Folha</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 th:text="${folha.id == null} ? 'Nova Folha de Pagamento' : 'Editar Folha de Pagamento'"></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+                <li><a th:href="@{/dependentes}">Dependentes</a></li>
+                <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+                <li><a th:href="@{/cargos}">Cargos</a></li>
+                <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <form th:action="@{${folha.id == null} ? '/folhaPagamento' : '/folhaPagamento/editar/' + ${folha.id}}" th:object="${folha}" method="post">
+                <div>
+                    <label>Colaborador:</label>
+                    <select th:field="*{colaborador}" required>
+                        <option th:each="colaborador : ${colaboradores}"
+                                th:value="${colaborador}"
+                                th:text="${colaborador.nome}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label>Período (AAAA-MM-DD):</label>
+                    <input type="date" th:field="*{periodo}" required/>
+                </div>
+                <div>
+                    <label>Salário Bruto:</label>
+                    <input type="number" step="0.01" th:field="*{salarioBruto}" required/>
+                </div>
+                <div>
+                    <label>Total Descontos:</label>
+                    <input type="number" step="0.01" th:field="*{totalDescontos}" required/>
+                </div>
+                <div>
+                    <label>Total Líquido:</label>
+                    <input type="number" step="0.01" th:field="*{totalLiquido}" required/>
+                </div>
+                <div>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </section>
+        <footer>
+            <a th:href="@{/folhaPagamento}">Voltar</a>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

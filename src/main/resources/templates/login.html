@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Payroll PRO</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Estilos específicos para a página de login */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4A90E2;
+        }
+        .login-container form div {
+            margin-bottom: 15px;
+        }
+        .login-container form input[type="text"],
+        .login-container form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .login-container form button {
+            width: 100%;
+            background-color: #4A90E2;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container form button:hover {
+            background-color: #50E3C2;
+        }
+        .login-container a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #4A90E2;
+            text-decoration: none;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login - Payroll PRO</h2>
+        <form th:action="@{/login}" method="post">
+            <div th:if="${error}" class="error" th:text="${error}"></div>
+            <div>
+                <input type="text" name="username" placeholder="Usuário" required/>
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="Senha" required/>
+            </div>
+            <div>
+                <button type="submit">Entrar</button>
+            </div>
+        </form>
+        <a th:href="@{/esqueceuSenha}">Esqueceu a senha?</a>
+    </div>
+</body>
+</html>

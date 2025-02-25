@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Folhas de Pagamento</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Folha de Pagamento</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/colaboradores}">Colaboradores</a></li>
+                <li><a th:href="@{/dependentes}">Dependentes</a></li>
+                <li><a th:href="@{/folhaPagamento}">Folha de Pagamento</a></li>
+                <li><a th:href="@{/cargos}">Cargos</a></li>
+                <li><a th:href="@{/logout}">Sair</a></li>
+            </ul>
+        </nav>
+        <section>
+            <a th:href="@{/folhaPagamento/novo}" class="button">Nova Folha</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Colaborador</th>
+                        <th>Período</th>
+                        <th>Salário Bruto</th>
+                        <th>Total Descontos</th>
+                        <th>Total Líquido</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="folha : ${folhas}">
+                        <td th:text="${folha.id}"></td>
+                        <td th:text="${folha.colaborador.nome}"></td>
+                        <td th:text="${folha.periodo}"></td>
+                        <td th:text="${folha.salarioBruto}"></td>
+                        <td th:text="${folha.totalDescontos}"></td>
+                        <td th:text="${folha.totalLiquido}"></td>
+                        <td>
+                            <a th:href="@{'/folhaPagamento/editar/' + ${folha.id}}">Editar</a>
+                            <a th:href="@{'/folhaPagamento/excluir/' + ${folha.id}}">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <footer>
+            <a th:href="@{/}">Voltar</a>
+            <p>&copy; 2025 Payroll PRO - Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

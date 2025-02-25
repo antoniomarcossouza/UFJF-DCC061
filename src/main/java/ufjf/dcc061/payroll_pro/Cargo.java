@@ -6,15 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Colaborador {
+public class Cargo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
-    private String cargo;
-    private Double salario;
+    private String descricao;
 
     // Getters e Setters
 
@@ -34,19 +33,11 @@ public class Colaborador {
         this.nome = nome;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public Double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(Double salario) {
-        this.salario = salario;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
