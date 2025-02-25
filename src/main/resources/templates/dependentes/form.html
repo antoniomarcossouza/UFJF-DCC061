@@ -34,7 +34,7 @@
                     <label>Colaborador:</label>
                     <select th:field="*{colaborador}" required>
                         <option th:each="colaborador : ${colaboradores}"
-                                th:value="${colaborador}"
+                                th:value="${colaborador.id}"
                                 th:text="${colaborador.nome}"></option>
                     </select>
                 </div>

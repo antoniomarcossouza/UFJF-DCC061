@@ -35,6 +35,7 @@ public class FolhaDePagamentoController {
     @PostMapping
     public String salvarFolha(@ModelAttribute FolhaDePagamento folha, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> System.out.println(error.toString()));
             model.addAttribute("colaboradores", colaboradorRepository.findAll());
             return "folhaPagamento/form";
         }
@@ -49,6 +50,7 @@ public class FolhaDePagamentoController {
         if (folha == null) {
             return "redirect:/folhaPagamento";
         }
+
         model.addAttribute("folha", folha);
         model.addAttribute("colaboradores", colaboradorRepository.findAll());
         return "folhaPagamento/form";

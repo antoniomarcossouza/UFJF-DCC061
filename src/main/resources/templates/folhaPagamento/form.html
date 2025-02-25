@@ -24,10 +24,10 @@
             <form th:action="@{${folha.id == null} ? '/folhaPagamento' : '/folhaPagamento/editar/' + ${folha.id}}" th:object="${folha}" method="post">
                 <div>
                     <label>Colaborador:</label>
-                    <select th:field="*{colaborador}" required>
-                        <option th:each="colaborador : ${colaboradores}"
-                                th:value="${colaborador}"
-                                th:text="${colaborador.nome}"></option>
+                    <select th:field="*{colaborador}">
+                        <option th:each="colab : ${colaboradores}" 
+                                th:value="${colab.id}" 
+                                th:text="${colab.nome}"></option>
                     </select>
                 </div>
                 <div>
