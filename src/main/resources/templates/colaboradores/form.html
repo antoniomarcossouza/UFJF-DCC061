@@ -26,9 +26,14 @@
                     <label>Nome:</label>
                     <input type="text" th:field="*{nome}" required />
                 </div>
+
                 <div>
                     <label>Cargo:</label>
-                    <input type="text" th:field="*{cargo}" required />
+                    <select th:field="*{cargo}" required>
+                        <option th:each="cargo : ${cargos}"
+                                th:value="${cargo.nome}"
+                                th:text="${cargo.nome}"></option>
+                    </select>
                 </div>
                 <div>
                     <label>Salário:</label>

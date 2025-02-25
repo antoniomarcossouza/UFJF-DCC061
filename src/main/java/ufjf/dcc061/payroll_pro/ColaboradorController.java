@@ -13,6 +13,9 @@ public class ColaboradorController {
     @Autowired
     private ColaboradorRepository colaboradorRepository;
 
+    @Autowired
+    private CargoRepository CargoRepository;
+
     // Listar todos os colaboradores
     @GetMapping
     public String listarColaboradores(Model model) {
@@ -24,6 +27,8 @@ public class ColaboradorController {
     @GetMapping("/novo")
     public String exibirFormularioCadastro(Model model) {
         model.addAttribute("colaborador", new Colaborador());
+        model.addAttribute("cargos", CargoRepository.findAll());
+
         return "colaboradores/form";
     }
 
